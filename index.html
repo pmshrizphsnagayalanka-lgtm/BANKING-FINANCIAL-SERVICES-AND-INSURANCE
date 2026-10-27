@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Banking & Financial Management System</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🏦 PM SHRI ZPHS<sup>+</sup> NAGAYALANKA</div>
+    <div class="logo1">YASHU'S SMART BANKING SYSTEM</div>
+</header>
+
+
+<div class="container">
+
+    <!-- ================================
+         SIDEBAR
+    ================================= -->
+
+    <aside>
+
+        <button onclick="showSection('dashboard')">
+            🏠 Dashboard
+        </button>
+
+        <button onclick="showSection('banking')">
+            💳 Banking
+        </button>
+
+        <button onclick="showSection('emi')">
+            💰 Loan EMI
+        </button>
+
+        <button onclick="showSection('insurance')">
+            🛡️ Insurance
+        </button>
+
+        <button onclick="showSection('reports')">
+            📊 Reports
+        </button>
+
+        <button onclick="showSection('machines')">
+            🏦 Bank Machines
+        </button>
+
+        <button onclick="showSection('safety')">
+            🚨 Safety Tips
+        </button>
+
+    </aside>
+
+
+    <!-- ================================
+         MAIN CONTENT
+    ================================= -->
+
+    <main>
+
+
+        <!-- ================================
+             DASHBOARD
+        ================================= -->
+
+        <section id="dashboard" class="section active">
+
+            <h1>🏦 Banking Dashboard</h1>
+
+            <p class="welcome">
+                Welcome to SmartBank Financial Management System
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>💰 Current Balance</h3>
+                    <p id="balance">₹0</p>
+                </div>
+
+                <div class="card">
+                    <h3>📥 Total Deposits</h3>
+                    <p id="deposits">₹0</p>
+                </div>
+
+                <div class="card">
+                    <h3>📤 Total Withdrawals</h3>
+                    <p id="withdrawals">₹0</p>
+                </div>
+
+                <div class="card">
+                    <h3>📋 Transactions</h3>
+                    <p id="transactionCount">0</p>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>📜 Recent Transactions</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="transactionTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             BANKING
+        ================================= -->
+
+        <section id="banking" class="section">
+
+            <h1>💳 Banking Operations</h1>
+
+
+            <div class="bank-box">
+
+                <div>
+
+                    <h2>📥 Deposit Money</h2>
+
+                    <input
+                        type="number"
+                        id="depositAmount"
+                        placeholder="Enter amount"
+                    >
+
+                    <button onclick="depositMoney()">
+                        Deposit
+                    </button>
+
+                </div>
+
+
+                <div>
+
+                    <h2>📤 Withdraw Money</h2>
+
+                    <input
+                        type="number"
+                        id="withdrawAmount"
+                        placeholder="Enter amount"
+                    >
+
+                    <button onclick="withdrawMoney()">
+                        Withdraw
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div id="bankMessage"></div>
+
+        </section>
+
+
+
+        <!-- ================================
+             EMI CALCULATOR
+        ================================= -->
+
+        <section id="emi" class="section">
+
+            <h1>💰 Loan EMI Calculator</h1>
+
+
+            <div class="calculator">
+
+                <label>Loan Amount (₹)</label>
+
+                <input
+                    type="number"
+                    id="loanAmount"
+                    placeholder="Example: 500000"
+                >
+
+
+                <label>Annual Interest Rate (%)</label>
+
+                <input
+                    type="number"
+                    id="interestRate"
+                    placeholder="Example: 8.5"
+                >
+
+
+                <label>Loan Tenure (Years)</label>
+
+                <input
+                    type="number"
+                    id="loanYears"
+                    placeholder="Example: 5"
+                >
+
+
+                <button onclick="calculateEMI()">
+                    Calculate EMI
+                </button>
+
+
+                <div class="result">
+
+                    <h2>Monthly EMI</h2>
+                    <p id="emiResult">₹0</p>
+
+                    <h3>Total Interest</h3>
+                    <p id="interestResult">₹0</p>
+
+                    <h3>Total Payment</h3>
+                    <p id="totalPayment">₹0</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             INSURANCE
+        ================================= -->
+
+        <section id="insurance" class="section">
+
+            <h1>🛡️ Insurance Premium Tracker</h1>
+
+
+            <div class="calculator">
+
+                <label>Insurance Name</label>
+
+                <input
+                    type="text"
+                    id="insuranceName"
+                    placeholder="Example: Health Insurance"
+                >
+
+
+                <label>Premium Amount (₹)</label>
+
+                <input
+                    type="number"
+                    id="premiumAmount"
+                    placeholder="Enter premium"
+                >
+
+
+                <label>Due Date</label>
+
+                <input
+                    type="date"
+                    id="dueDate"
+                >
+
+
+                <button onclick="addInsurance()">
+                    Add Insurance
+                </button>
+
+
+                <div id="insuranceList"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             REPORTS
+        ================================= -->
+
+        <section id="reports" class="section">
+
+            <h1>📊 Financial Reports</h1>
+
+
+            <div class="cards">
+
+                <div class="report-card">
+                    <h2>📥 Deposits</h2>
+                    <p id="reportDeposits">₹0</p>
+                </div>
+
+                <div class="report-card">
+                    <h2>📤 Withdrawals</h2>
+                    <p id="reportWithdrawals">₹0</p>
+                </div>
+
+                <div class="report-card">
+                    <h2>💰 Balance</h2>
+                    <p id="reportBalance">₹0</p>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>📈 Financial Summary</h2>
+
+                <p>
+                    SmartBank helps users monitor deposits,
+                    withdrawals, loan EMI and insurance payments
+                    in one place.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             BANK MACHINES SECTION
+        =================================================== -->
+
+        <section id="machines" class="section">
+
+            <h1>🏦 Bank Machines & Components</h1>
+
+            <p class="welcome">
+                Explore banking machines, internal components,
+                sensors and their functions.
+            </p>
+
+
+            <!-- Search -->
+
+            <div class="machine-search">
+
+                <input
+                    type="text"
+                    id="machineSearch"
+                    placeholder="🔍 Search bank machine..."
+                    oninput="searchMachines()"
+                >
+
+            </div>
+
+
+            <!-- Machine Cards -->
+
+            <div
+                id="machineGrid"
+                class="machine-grid"
+            >
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             SAFETY
+        =================================================== -->
+
+        <section id="safety" class="section">
+
+            <h1>🚨 Fraud Awareness & Safety Tips</h1>
+
+
+            <div class="safety-grid">
+
+                <div class="safety-card">
+
+                    🔐
+                    <h2>Never Share OTP</h2>
+
+                    <p>
+                        Never share your OTP, PIN or password
+                        with anyone.
+                    </p>
+
+                </div>
+
+
+                <div class="safety-card">
+
+                    📱
+
+                    <h2>Verify Messages</h2>
+
+                    <p>
+                        Check suspicious SMS, emails and links
+                        before opening.
+                    </p>
+
+                </div>
+
+
+                <div class="safety-card">
+
+                    💳
+
+                    <h2>Protect Card Details</h2>
+
+                    <p>
+                        Never share your card number, CVV or PIN.
+                    </p>
+
+                </div>
+
+
+                <div class="safety-card">
+
+                    🚨
+
+                    <h2>Report Fraud</h2>
+
+                    <p>
+                        Immediately inform your bank if you notice
+                        an unauthorized transaction.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- ==================================================
+     MACHINE DETAILS MODAL
+=================================================== -->
+
+<div
+    id="machineModal"
+    class="machine-modal"
+    onclick="closeMachineOutside(event)"
+>
+
+    <div
+        class="machine-modal-content"
+        onclick="event.stopPropagation()"
+    >
+
+        <button
+            class="close-modal"
+            onclick="closeMachineModal()"
+        >
+            ×
+        </button>
+
+
+        <div id="machineDetails">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<footer>
+
+    <p>
+        © 2026 SmartBank | BFSI school-Level Project</p>
+        <br>
+        designed  |  developed by <i>yaswanth.B</i>
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
